@@ -5,7 +5,10 @@ Tecnologia: Javascript
             html
             BooStrap
                
-<img src="/Imagens/Apresentaca001.png" alt="Registro de Notas"/>   
+<img src="/Imagens/Apresentaca001.png" alt="Registro de notas"/>   
 
-![Registro de Notas](https://raw.githubusercontent.com/Tarrou501/
-Fwfe-aula03-paginas-notas/Imagens/Apresentaca001.png)
+<img src="/Imagens/Apresentaca002.png" alt="Gráfico"/>   
+
+<img src="/Imagens/Apresentaca003.png" alt="Ordenação por nome descrecente"/>  
+
+<img src="/Imagens/Apresentaca003.png" alt="Ordenação por média crecente"/>  
