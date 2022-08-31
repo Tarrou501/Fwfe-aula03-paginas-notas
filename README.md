@@ -5,5 +5,7 @@ Tecnologia: Javascript
             html
             BooStrap
                
+<img src="/Imagens/Apresentaca001.png" alt="Registro de Notas"/>   
+
 ![Registro de Notas](https://raw.githubusercontent.com/Tarrou501/
-Fwfe-aula03-paginas-notas/Imagens/Apresentaca001.png
+Fwfe-aula03-paginas-notas/Imagens/Apresentaca001.png)
