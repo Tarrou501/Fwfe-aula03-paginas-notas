@@ -5,10 +5,12 @@ Tecnologia: Javascript
             html
             BooStrap
                
+ <h2>Registro de Nota</h2>              
 <img src="/Imagens/Apresentaca001.png" alt="Registro de notas"/>   
 
+ <h2>Gráfico de Média e notas</h2>
 <img src="/Imagens/Apresentaca002.png" alt="Gráfico"/>   
-
+ <h2>Ordenação por nome</h2>
 <img src="/Imagens/Apresentaca003.png" alt="Ordenação por nome descrecente"/>  
-
-<img src="/Imagens/Apresentaca003.png" alt="Ordenação por média crecente"/>  
+ <h2>Ordenação por média</h2>
+<img src="/Imagens/Apresentaca004.png" alt="Ordenação por média crecente"/>  
