@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <title>SENAI - SSE</title>
+</head>
+
+<body>
+
+  <head>
+    <div id="divCabecalho" class="d-flex flex-row align-items-center mb-1 w-100 position-relative">
+      <img class="m-2" src="Imagens/logoSenai.jpg" alt="Logo SENAI">
+      <div class="d-flex justify-content-center w-100">
+        <span class="text-white">SSE - SISTEMA SENAI-SP de ENSINO </span>
+      </div>
+    </div>
+
+  </head>
+
+  <main class="container my-4  mx-auto ">
+
+    <fieldset class="column p-4 mt-2">
+
+      <h1 class="text-danger">Registro de Nota</h1>
+
+      <div class="row g-2 mb-4 row ">
+
+        <div class="col-lg-6 d-flex flex-column">
+          <label for="qtdNotas" class="form-label">Qt. de Notas</label>
+          <div class="d-flex flex-row h-50">
+            <input type="number" class="form-control" id="qtdNotas" placeholder="" value="2" min="1" max="6"
+              onkeypress="return event.charCode >= 48 && event.charCode <= 57 && this.value.length < 1 ;"
+              onkeyup="limitaValor('qtdNotas',6,'A quantidade máxima de notas é 6.');"
+              onchange="HabilitarOrdenacao(false);" />
+
+
+            <button id="btnAtualizar" type="button" class="btn btn-outline-danger" data-bs-toggle="tooltip"
+              data-bs-placement="Right" data-bs-custom-class="custom-tooltip"
+              data-bs-title="Atualizar quantidade de notas" onclick="atualizarColunasNotas();">
+              Atualizar Colunas
+            </button>
+          </div>
+        </div>
+
+        <div class="col-lg-6 mb-3 d-flex flex-column h-100">
+          <label for="colunmOrder" class="form-label">Ordenação por</label>
+
+          <div class="d-flex flex-row ">
+
+            <select id="colunmOrder" class="form-select form-select-sm w-25" disabled>
+              <option value="nome" selected>Nome aluno</option>
+              <option value="media">Media</option>
+            </select>
+            <select id="typeOrder" class="form-select form-select-sm w-25" disabled>
+              <option value='>' selected>Crescente</option>
+              <option value='<'>Descrecente</option>
+            </select>
+            <button id="btnOrder" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top"
+              data-bs-custom-class="custom-tooltip"
+              data-bs-title="Ordenar alunos por nome ou média,crescente e descrecente." onclick="Ordenar()"
+              disabled>Ordenar alunos</button>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="slider-wrapper">
+        <label for="inputRangeCtrl" class="form-label">Quantidade de Alunos</label>
+        <div>
+          <input type="range" class="w-75" id="inputRangeCtrl" min="1" max="10" value="2" step="1">
+          <input aria-readonly="true"
+            class="rangeValor border border-danger rounded-circle text-center bg-warning text-dark" type="text"
+            id="inputRangeValor" value="2" data-decimals="0" />
+        </div>
+      </div>
+    </fieldset>
+
+    <div id="liveAlertPlaceholder"></div>
+
+    <table id="tableNotas" class="table table-bordered table-danger table-striped  table-sm">
+
+      <thead id="theadId" class="table-primary border-primary">
+
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col" class="text-center">Nota 1</th>
+          <th scope="col">Nota 2</th>
+          <th scope="col">Nota 3</th>
+          <th scope="col">Nota 4</th>
+          <th scope="col">Média</th>
+          <th scope="col">Situação</th>
+        </tr>
+
+
+      </thead>
+      <tbody class="border-danger">
+        <tr>
+          <th>1</th>
+          <td><input type="text" class="form-control" id="" placeholder="nome"></td>
+          <td class="tdNota"><input type="number" class="form-control nota" id="nota0101" placeholder="nota" value="Tarrou"></td>
+          <td><input type="number" class="form-control nota" id="nota0102" placeholder="nota"></td>
+          <td><input type="number" class="form-control nota" id="nota0103" placeholder="nota"></td>
+          <td><input type="number" class="form-control nota" id="nota0104" placeholder="nota"></td>
+          <td><output></output></td>
+          <td><output></output></td>
+        </tr>
+        <tr>
+          <th>2</th>
+          <td><input type="text" class="form-control" id="" placeholder="nome"></td>
+          <td><input type="number" class="form-control nota" id="nota0201" placeholder=""></td>
+          <td><input type="number" class="form-control nota" id="nota0202" placeholder=""></td>
+          <td><input type="number" class="form-control nota" id="nota0203" placeholder=""></td>
+          <td><input type="number" class="form-control nota" id="nota0204" placeholder=""></td>
+          <td><output></output></td>
+          <td><output></output></td>
+        </tr>
+        <tr>
+          <th>3</th>
+          <td><input type="text" class="form-control" id="" placeholder="nome"></td>
+          <td><input type="number" class="form-control nota" id="nota0301" placeholder=""></td>
+          <td><input type="number" class="form-control nota" id="nota0302" placeholder=""></td>
+          <td><input type="number" class="form-control nota" id="nota0303" placeholder=""></td>
+          <td><input type="number" class="form-control nota" id="nota0304" placeholder=""></td>
+          <td><output></output></td>
+          <td><output></output></td>
+        </tr>
+        <tr>
+          <th>4</th>
+          <td><input type="text" class="form-control" id="" placeholder="nome"></td>
+          <td><input type="number" class="form-control nota" id="nota0401" placeholder=""></td>
+          <td><input type="number" class="form-control nota" id="nota0402" placeholder=""></td>
+          <td><input type="number" class="form-control nota" id="nota0403" placeholder=""></td>
+          <td><input type="number" class="form-control nota" id="nota0404" placeholder=""></td>
+          <td><output></output></td>
+          <td><output></output></td>
+        </tr>
+      </tbody>
+
+    </table>
+    <div>
+      <h5>Média Geral</h5>
+      <div>A média da sala é <output id="outputmediageral">--</output></div>
+    </div>
+    <div class="d-flex flex-row" >
+      <button id="btnAtualizar" type="button" class="btn  btn-lg btn-outline-danger" data-bs-toggle="tooltip"
+        data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+        data-bs-title="Recalcular as médias e as situações dos alunos." onclick="calcularMedia();">
+        Calcular Médias
+      </button>
+      <button id="btnMostraGrafico" type="button" class="btn  btn-lg btn-outline-danger" data-bs-toggle="tooltip"
+        data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+        data-bs-title="Exibir gráfico média." onclick="exibirGrafico();">
+        Exibir Gráfico
+      </button>
+    </div>
+    
+    <button hidden type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" data-bs-title="Popover title"
+      data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <script src="scripts/principal.js"></script>
+  <script src="scripts/sort.js"></script>
+  <script src="scripts/grafico.js"></script>
+  <script>
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+   
+  </script>
+
+
+</body>
+
+</html>

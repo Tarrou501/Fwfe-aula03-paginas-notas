@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+}
+
+#divCabecalho {
+    height: 49px;
+    background-image: url(../Imagens/BkgHeader.png);
+}
+
+#divCabecalho span {
+    font-weight: bold;
+    font-family: Verdana, Tahoma, Arial !important;
+}
+
+
+
+fieldset{
+    background-color: whitesmoke;  
+}
+
+#qtdNotas{
+    width: 50px;
+    
+}
+
+main{
+    background-color: rgb(214, 216, 215);
+    height: 2000px;
+}
+
+
+.nota{
+    width: 90px;
+    color: bisque;
+  }
+.rangeValor{
+    width: 30px;
+    border: 1;
+
+}
+.tdNota{
+    background-color: rgb(22, 6, 6);
+    width: 80px;
+}

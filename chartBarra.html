@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+  
+<style>
+    
+</style>
+</head>
+<body>
+  
+  <canvas id="myChart" width="400" height="200"></canvas>
+  <script>
+     var query = location.search.slice(1);
+      var partes = query.split('&');
+      var data = {};
+
+      partes.forEach(function (parte) {
+        var chaveValor = parte.split('=');
+        var chave = chaveValor[0];
+        var valor = chaveValor[1];
+        data[chave] = valor;
+      });
+
+    
+      var exibirMedia =  data["exibirMedia"];
+      var qtdNota = data["qtdNota"];
+      var objtApres  =  data["objetivos"].split(",");
+
+      var ctx = document.getElementById("myChart");
+      
+      class Nota{
+        constructor(label, backgroundColor,borderColor,data) {
+          this.label = label;
+          this.backgroundColor = backgroundColor;
+          this.borderColor = borderColor;
+          this.data = data;
+        }
+      }
+
+      let backgroundColor = ['rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(105, 53, 86, 0.4)'
+              
+              ];
+  
+      let borderColor= [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(105, 53, 86, 1)'
+            ];
+      let _dataset=[];
+
+      for (i =1;i<= qtdNota; i++){
+          var dadosNota =  data[`etapa${i}`].split(",");
+          let n = new Nota(`Nota ${i}`,backgroundColor[i-1],borderColor[i-1],dadosNota);
+          _dataset.push(n);
+      }
+
+      
+      if (exibirMedia == 'true'){
+          let dadosNota =  data[`media`].split(",");
+          let n = new Nota(`Média`,backgroundColor[6],borderColor[6],dadosNota);
+          _dataset.push(n);
+      }
+      
+
+      var myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+          labels: objtApres,
+          datasets: _dataset
+        } 
+      });
+  </script>
+   
+  
+  
+</body>
+</html>
