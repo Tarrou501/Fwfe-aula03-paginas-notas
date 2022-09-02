@@ -1,9 +1,12 @@
 # Fwfe-aula03-paginas-notas
-Atividade de PWFE:  Realizar uma plataforma de inserção de notas do semestre de um grupo de aluno.
+<h1>Atividade de PWFE</h1>  
+Realizar uma plataforma de inserção de notas do semestre de um grupo de aluno.
 
-Tecnologia: Javascript
-            html
-            BooStrap
+<ul>Tecnologia Utilizada
+<li>Javascript</li>
+<li>html</li>
+<li>BooStrap</li>                     
+</ul> 
                
  <h2>Registro de Nota</h2>              
 <img src="/Imagens/Apresentaca001.png" alt="Registro de notas"/>   
